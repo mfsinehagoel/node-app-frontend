@@ -1,0 +1,22 @@
+<div class="card">
+  <h2>Employee Login</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>
+      Email
+      <input formControlName="email" />
+    </label>
+
+    <label>
+      Password
+      <input type="password" formControlName="password" />
+    </label>
+
+    <div class="actions">
+      <button type="submit" [disabled]="loading">Login</button>
+      <a routerLink="/register">Register</a>
+    </div>
+
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </form>
+</div>

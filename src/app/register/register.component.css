@@ -1,0 +1,35 @@
+.card {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.error {
+  color: #b00020;
+}
+.success {
+  color: #007700;
+}
