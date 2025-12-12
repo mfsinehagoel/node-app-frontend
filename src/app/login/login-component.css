@@ -1,0 +1,37 @@
+.card {
+  max-width: 520px;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  
+}
+label {
+  display: block;
+  margin: 8px 0;
+  font-weight: 600;
+}
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  box-sizing: border-box;
+}
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.err {
+  color: #b00020;
+  margin-top: 6px;
+}
+.link {
+  text-decoration: none;
+  color: #0a66c2;
+}
+button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}

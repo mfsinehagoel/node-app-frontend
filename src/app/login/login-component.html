@@ -1,22 +1,26 @@
-<div class="card">
-  <h2>Employee Login</h2>
+<section class="card">
+  <h1>Employee Login</h1>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <label>
-      Email
+    <label>Email
       <input formControlName="email" />
     </label>
+    <div class="err" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+      Enter a valid email.
+    </div>
 
-    <label>
-      Password
+    <label>Password
       <input type="password" formControlName="password" />
     </label>
+    <div class="err" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+      Password is required.
+    </div>
 
     <div class="actions">
       <button type="submit" [disabled]="loading">Login</button>
-      <a routerLink="/register">Register</a>
+      <a routerLink="/register" class="link">Register</a>
     </div>
 
-    <p *ngIf="error" class="error">{{ error }}</p>
+    <p class="err" *ngIf="error">{{ error }}</p>
   </form>
-</div>
+</section>
