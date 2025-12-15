@@ -25,6 +25,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  goToRegister() {
+	this.router.navigateByUrl('/register');
+  }
+
   onSubmit() {
     this.error = '';
     if (this.form.invalid) {

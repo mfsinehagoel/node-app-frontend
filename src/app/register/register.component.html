@@ -28,7 +28,7 @@
 
     <div class="actions">
       <button type="submit" [disabled]="loading">Register</button>
-      <a routerLink="/login">Already have an account? Login</a>
+      <p>Already have an account? <button (click)="goToLogin()">Login</button></p>
     </div>
 
     <p *ngIf="error" class="error">{{ error }}</p>

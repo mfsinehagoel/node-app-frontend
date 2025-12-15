@@ -6,35 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-//   private tokenKey = 'auth_token';
-//   constructor(private http: HttpClient) {}
-
-//   register(payload: any) {
-//     return this.http
-//       .post<{ token: string }>(`${environment.apiUrl}/register`, payload)
-//       .pipe(tap((res) => this.setToken(res.token)));
-//   }
-
-//   login(payload: any) {
-//     return this.http
-//       .post<{ token: string }>(`${environment.apiUrl}/login`, payload)
-//       .pipe(tap((res) => this.setToken(res.token)));
-//   }
-
-//   setToken(token: string) {
-//     localStorage.setItem(this.tokenKey, token);
-//   }
-//   getToken() {
-//     return localStorage.getItem(this.tokenKey);
-//   }
-//   logout() {
-//     localStorage.removeItem(this.tokenKey);
-//   }
-//   isLoggedIn() {
-//     return !!this.getToken();
-//   }
-
-
   private userSubject = new BehaviorSubject<any>(this.getStoredUser());
   user$ = this.userSubject.asObservable();
 
@@ -45,14 +16,17 @@ export class AuthService {
   }
 
   login(payload: { email: string; password: string }) {
-    return this.http.post<{ token: string; user: any }>(`${environment.apiUrl}/login`, payload)
-      .pipe(tap(resp => {
-        if (resp && resp.token) {
-          localStorage.setItem('token', resp.token);
-          localStorage.setItem('user', JSON.stringify(resp.user));
-          this.userSubject.next(resp.user);
-        }
-      }));
+    return this.http
+      .post<{ token: string; user: any }>(`${environment.apiUrl}/login`, payload)
+      .pipe(
+        tap((resp) => {
+          if (resp && resp.token) {
+            localStorage.setItem('token', resp.token);
+            localStorage.setItem('user', JSON.stringify(resp.user));
+            this.userSubject.next(resp.user);
+          }
+        })
+      );
   }
 
   logout() {
@@ -70,7 +44,7 @@ export class AuthService {
   }
 
   private getStoredUser() {
-    const u = localStorage.getItem('user');
-    return u ? JSON.parse(u) : null;
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
   }
 }

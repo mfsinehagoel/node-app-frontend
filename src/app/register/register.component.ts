@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
-  standalone: true
+  standalone: true,
 })
 export class RegisterComponent implements OnInit {
   error = '';
@@ -20,19 +20,23 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
 
   ngOnInit() {
-	this.form = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    role: ['employee']
-  });
+    this.form = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['employee'],
+    });
+  }
+
+  goToLogin() {
+    this.router.navigateByUrl('/login');
   }
 
   onSubmit() {
     this.error = '';
     this.success = '';
     if (this.form.invalid) {
-      this.error = 'Please fix the errors in the form.';
+      this.error = 'Incorrect details';
       return;
     }
     this.loading = true;
@@ -45,7 +49,7 @@ export class RegisterComponent implements OnInit {
       error: (err) => {
         this.loading = false;
         this.error = err?.error?.message || 'Registration failed';
-      }
+      },
     });
   }
 }
