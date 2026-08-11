@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
         next: (res: any) => {
           this.profile = res.profile;
 
-          if (this.profile.role === 'admin') {
+          if (this.profile?.role === 'admin') {
             this.fetchAllUsers(token);
           } else {
             this.loading = false;
@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
       })
       .subscribe({
         next: (res: any) => {
-          this.employees = res.users;
+          this.employees = res;
           this.loading = false;
         },
         error: (err) => {
