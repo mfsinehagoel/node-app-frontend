@@ -18,7 +18,7 @@
 
     <div class="actions">
       <button type="submit" [disabled]="loading">Login</button>
-	  <p>Don't have an account? <button (click)="goToRegister()">Register</button></p>
+	  <p>Don't have an account? <button type="button" (click)="goToRegister()">Register</button></p>
     </div>
 
     <p class="err" *ngIf="error">{{ error }}</p>

@@ -28,7 +28,7 @@
 
     <div class="actions">
       <button type="submit" [disabled]="loading">Register</button>
-      <p>Already have an account? <button (click)="goToLogin()">Login</button></p>
+      <p>Already have an account? <button type="button" (click)="goToLogin()">Login</button></p>
     </div>
 
     <p *ngIf="error" class="error">{{ error }}</p>
